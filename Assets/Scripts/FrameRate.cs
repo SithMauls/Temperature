@@ -9,7 +9,7 @@ public class FrameRate : MonoBehaviour {
 	private float deltaTime = 0.0f;
 
 
-	private void Awake() {
+	private void Start() {
 		QualitySettings.vSyncCount = vSync;
 		Application.targetFrameRate = frameRate;
 	}

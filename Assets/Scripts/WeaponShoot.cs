@@ -9,6 +9,8 @@ public class WeaponShoot : MonoBehaviour {
 	private Camera m_Camera;
 	private LineRenderer m_LaserLine;
 	private RaycastHit m_RaycastHit;
+	private Temperature m_TempScript;
+	private float m_TempStore;
 
 
 	private void Start() {
@@ -18,17 +20,17 @@ public class WeaponShoot : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetButton("Fire 1") || Input.GetAxis("Fire Axis 2") > 0f) {
-			Fire(true, m_LaserTemp, Color.red);
+			Fire(m_LaserTemp, Color.red);
 		}
 		else if (Input.GetButton("Fire 2") || Input.GetAxis("Fire Axis 1") > 0f) {
-			Fire(false, -m_LaserTemp, Color.cyan);
+			Fire(-m_LaserTemp, Color.cyan);
 		}
 		else {
 			m_LaserLine.enabled = false;
 		}
 	}
 
-	private void Fire(bool hotShot, float temp, Color colour) {
+	private void Fire(float temp, Color colour) {
 		m_LaserLine.enabled = true;
 		m_LaserLine.startColor = colour;
 		m_LaserLine.SetPosition(0, m_LaserMuzzle.position);
@@ -38,13 +40,9 @@ public class WeaponShoot : MonoBehaviour {
 		if (Physics.Raycast(rayOrigin, m_Camera.transform.forward, out m_RaycastHit, m_LaserRange)) {
 			m_LaserLine.SetPosition(1, m_RaycastHit.point);
 
-			foreach(IShootable item in m_RaycastHit.transform.GetComponents<IShootable>()) {
-				if (hotShot) {
-					item.HotShot();
-				}
-				else if (!hotShot){
-					item.ColdShot();
-				}
+			m_TempScript = m_RaycastHit.collider.GetComponent<Temperature>();
+			if (m_TempScript != null) {
+				m_TempScript.ShotStart(temp);
 			}
 		}
 		else {

@@ -90,15 +90,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Buoyancy.cs" />
-    <Compile Include="Assets\Scripts\Carry.cs" />
     <Compile Include="Assets\Scripts\FrameRate.cs" />
     <Compile Include="Assets\Scripts\Ice.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IShootable.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerJointBreak.cs" />
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
-    <Compile Include="Assets\Scripts\TemperatureController.cs" />
+    <Compile Include="Assets\Scripts\Properties\Buoyancy.cs" />
+    <Compile Include="Assets\Scripts\Properties\Carry.cs" />
+    <Compile Include="Assets\Scripts\Properties\Temperature.cs" />
     <Compile Include="Assets\Scripts\Volume.cs" />
     <Compile Include="Assets\Scripts\WeaponShoot.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Buoyancy : MonoBehaviour {
 	[SerializeField] private Transform[] m_BuoyancyPoints;
 	[SerializeField] private float m_BuoyancyStrength = 1f;

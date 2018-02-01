@@ -24,21 +24,6 @@ public class PlayerMotor : MonoBehaviour {
 		PerformRotation();
 	}
 
-	//Gets a movement vector
-	public void Move(Vector3 velocity) {
-		m_Velocity = velocity;
-	}
-
-	//Gets a rotational vector
-	public void Rotate(Vector3 rotation) {
-		m_Rotation = rotation;
-	}
-
-	//Gets a rotational vector for the camera
-	public void RotateCamera(float cameraRotationX) {
-		m_CameraRotationX = cameraRotationX;
-	}
-
 	//Perform movement based on velocity variable
 	private void PerformMovement() {
 		if (m_Velocity != Vector3.zero) {
@@ -58,5 +43,20 @@ public class PlayerMotor : MonoBehaviour {
 			//Apply rotation to camera transform
 			m_Camera.transform.localEulerAngles = new Vector3(m_CurrentCameraRotationX, 0f, 0f);
 		}
+	}
+
+	//Gets a movement vector
+	public void Move(Vector3 velocity) {
+		m_Velocity = velocity;
+	}
+
+	//Gets a rotational vector
+	public void Rotate(Vector3 rotation) {
+		m_Rotation = rotation;
+	}
+
+	//Gets a rotational vector for the camera
+	public void RotateCamera(float cameraRotationX) {
+		m_CameraRotationX = cameraRotationX;
 	}
 }
